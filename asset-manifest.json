@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Kids_Like/static/css/main.7acaea2f.css",
+    "main.js": "/Kids_Like/static/js/main.46e59e74.js",
+    "index.html": "/Kids_Like/index.html",
+    "main.7acaea2f.css.map": "/Kids_Like/static/css/main.7acaea2f.css.map",
+    "main.46e59e74.js.map": "/Kids_Like/static/js/main.46e59e74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.46e59e74.js"
+  ]
+}
