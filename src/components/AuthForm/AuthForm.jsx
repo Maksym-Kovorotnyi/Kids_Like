@@ -1,10 +1,25 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { logInUser, registerUser } from 'redux/Auth/AuthOperations';
+import {
+  FormBox,
+  FormButton,
+  FormInputEmail,
+  FormInputPassword,
+  FormLabel,
+  FormTitle,
+  FormValidError,
+  LabelRequired,
+  PageForm,
+  PageTitle,
+} from './AuthForm.stuled';
 
 const AuthForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const dispatch = useDispatch();
 
   const user = {
@@ -12,14 +27,25 @@ const AuthForm = () => {
     password: password,
   };
 
-  const handleLogIn = () => {
-    dispatch(logInUser(user));
+  const handleLogIn = async () => {
+    try {
+      await dispatch(logInUser(user)).unwrap();
+      toast.success('Congratulations !!!');
+    } catch (error) {
+      toast.error(error);
+    }
     setEmail('');
     setPassword('');
   };
 
-  const handleRegistration = () => {
-    dispatch(registerUser(user));
+  const handleRegistration = async () => {
+    try {
+      await dispatch(registerUser(user)).unwrap();
+      toast.success('Congratulations !!!');
+    } catch (error) {
+      toast.error(error);
+    }
+
     setEmail('');
     setPassword('');
   };
@@ -30,51 +56,88 @@ const AuthForm = () => {
     switch (name) {
       case 'email':
         setEmail(value);
+        setEmailError(validateEmail(value));
         break;
       case 'password':
         setPassword(value);
+        setPasswordError(validatePassword(value));
         break;
       default:
         return;
     }
   };
 
+  const validateEmail = email => {
+    if (!email) {
+      return 'Email is required';
+    } else if (
+      !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(email)
+    ) {
+      return 'Email is not valid';
+    } else {
+      return '';
+    }
+  };
+
+  const validatePassword = password => {
+    if (!password) {
+      return 'Password is required';
+    } else if (password.length < 8) {
+      return 'Password should be at least 8 characters long';
+    } else if (password.length > 100) {
+      return 'Password should be at most 100 characters long';
+    } else {
+      return '';
+    }
+  };
+
   return (
     <>
-      <h2>Do your homework, get some great prizes!</h2>
-      <form>
-        <p>Log in with e-mail and password after registering:</p>
-        <label>
-          Email:
-          <input
-            placeholder="your@email.com
+      <FormBox>
+        <PageTitle>Do your homework, get some great prizes!</PageTitle>
+        <PageForm>
+          <FormTitle>
+            Log in with e-mail and password after registering:
+          </FormTitle>
+          <FormLabel>
+            <div>
+              <LabelRequired>*</LabelRequired>
+              Email:
+            </div>
+            <FormInputEmail
+              placeholder="your@email.com
             "
-            onChange={handleChange}
-            value={email}
-            type="email"
-            name="email"
-            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            placeholder="*******"
-            onChange={handleChange}
-            value={password}
-            type="password"
-            name="password"
-            required
-          />
-        </label>
-        <button type="button" onClick={handleLogIn}>
-          Log In
-        </button>
-        <button type="button" onClick={handleRegistration}>
-          Register
-        </button>
-      </form>
+              onChange={handleChange}
+              value={email}
+              type="email"
+              name="email"
+              required
+            />
+            {emailError && <FormValidError>{emailError}</FormValidError>}
+          </FormLabel>
+          <FormLabel>
+            <div>
+              <LabelRequired>*</LabelRequired>
+              Password:
+            </div>
+            <FormInputPassword
+              placeholder="••••••••"
+              onChange={handleChange}
+              value={password}
+              type="password"
+              name="password"
+              required
+            />
+            {passwordError && <FormValidError>{passwordError}</FormValidError>}
+          </FormLabel>
+          <FormButton type="button" onClick={handleLogIn}>
+            Log In
+          </FormButton>
+          <FormButton type="button" onClick={handleRegistration}>
+            Register
+          </FormButton>
+        </PageForm>
+      </FormBox>
     </>
   );
 };
