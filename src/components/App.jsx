@@ -4,11 +4,13 @@ import ContactsPage from 'pages/ContactsPage/ContactsPage';
 import MainPage from 'pages/MainPage/MainPage';
 import PlanningPage from 'pages/PlanningPage/PlanningPage';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './Header/Header';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/Auth/AuthOperations';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
+import Header from './Header/Header';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,11 +22,39 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/planning" element={<PlanningPage />} />
-          <Route path="/award" element={<AwardPage />} />
+        <Route path="/" element={<Header />}>
+          <Route
+            path="/main"
+            element={
+              <PrivateRoute>
+                <MainPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/auth"
+            element={
+              <PublicRoute>
+                <AuthPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/planning"
+            element={
+              <PrivateRoute>
+                <PlanningPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/award"
+            element={
+              <PrivateRoute>
+                <AwardPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="/contacts" element={<ContactsPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
