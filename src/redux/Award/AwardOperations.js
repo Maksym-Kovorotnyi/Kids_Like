@@ -18,7 +18,7 @@ export const getGifts = createAsyncThunk(
   }
 );
 
-export const patchGifts = createAsyncThunk(
+export const buyGifts = createAsyncThunk(
   'award/buyGifts',
   async ({ giftIds }, thunkAPI) => {
     try {
