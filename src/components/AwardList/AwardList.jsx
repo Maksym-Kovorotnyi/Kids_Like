@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGifts } from 'redux/Award/AwardOperations';
-import { allGifts } from 'redux/Award/AwardSelectors';
+import { allGifts, giftIds } from 'redux/Award/AwardSelectors';
 import { ReactComponent as Selected } from '../../images/Selected.svg';
 import { ReactComponent as Unselected } from '../../images/Unselected.svg';
 import { addGiftId } from 'redux/Award/AwardSlice';
 
 export default function AwardList() {
   const gifts = useSelector(allGifts);
+  const ids = useSelector(giftIds);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,16 +18,22 @@ export default function AwardList() {
   }, [dispatch]);
 
   const handleTogleSelected = e => {
-    dispatch(addGiftId());
     if (e.target.nodeName === 'rect') {
-      console.dir(e.currentTarget.id);
+      ids.forEach(id => {
+        if (Number(id) === Number(e.currentTarget.id)) {
+          return;
+          gifts.forEach(({ isSelected }) => (isSelected = true));
+          dispatch(addGiftId(Number(e.currentTarget.id)));
+        }
+      });
     }
+    console.log(gifts);
   };
 
   return (
     <div>
       <ul>
-        {gifts.map(({ title, price, imageUrl, id, isSelected }) => {
+        {giftState.map(({ title, price, imageUrl, id, isSelected }) => {
           return (
             <li onClick={handleTogleSelected} key={id} id={id}>
               <img src={imageUrl} alt="" />

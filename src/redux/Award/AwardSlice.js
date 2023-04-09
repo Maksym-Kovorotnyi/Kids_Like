@@ -10,22 +10,19 @@ const awardInitialState = {
 const awardSlice = createSlice({
   name: 'award',
   initialState: awardInitialState,
-  redusers: {
+  reducers: {
     addGiftId(state, { payload }) {
-      console.log(payload);
-      console.log(state);
-    },
-    addToBooks(state, { payload }) {
-      state.books.push(payload);
+      state.giftIds.push(payload);
     },
   },
   extraReducers: builder => {
-    builder.addCase(getGifts.fulfilled, (state, action) => {
-      state.gifts = action.payload;
-    });
-    // .addCase(buyGifts.fulfilled, (state, { payload }) => {
-    //   state.giftIds = payload.giftIds;
-    // });
+    builder
+      .addCase(getGifts.fulfilled, (state, { payload }) => {
+        state.gifts = payload;
+      })
+      .addCase(buyGifts.fulfilled, (state, { payload }) => {
+        console.log(payload);
+      });
   },
 });
 

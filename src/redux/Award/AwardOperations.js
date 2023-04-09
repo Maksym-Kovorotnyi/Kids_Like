@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { token } from 'redux/Auth/AuthOperations';
 
 axios.defaults.baseURL = 'https://kidslike-v1-backend.goit.global';
@@ -27,7 +28,7 @@ export const buyGifts = createAsyncThunk(
       const response = await axios.patch(`/gift`, { giftIds });
       return response;
     } catch (error) {
-      console.log(error.message);
+      toast.warn(error.response.data.message);
     }
   }
 );
