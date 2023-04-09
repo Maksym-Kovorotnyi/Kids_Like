@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/Kids_Like/static/css/main.7acaea2f.css",
-    "main.js": "/Kids_Like/static/js/main.750c901d.js",
+    "main.css": "/Kids_Like/static/css/main.ef1b6380.css",
+    "main.js": "/Kids_Like/static/js/main.58b48141.js",
+    "static/media/Clean.png": "/Kids_Like/static/media/Clean.54c49969602b69b6d2de.png",
+    "static/media/Clean-girl.png": "/Kids_Like/static/media/Clean-girl.446aea10a3168b4916d0.png",
+    "static/media/Prize.png": "/Kids_Like/static/media/Prize.9d9e714513676d2af48a.png",
+    "static/media/Robo.png": "/Kids_Like/static/media/Robo.d1eef97f65b76ce02b94.png",
+    "static/media/victory.svg": "/Kids_Like/static/media/victory.08c2d88835c5eb531906e4ffda1d3546.svg",
+    "static/media/logout.svg": "/Kids_Like/static/media/logout.2381a02bfe7bd992d070afb753c6b2a7.svg",
     "index.html": "/Kids_Like/index.html",
-    "main.7acaea2f.css.map": "/Kids_Like/static/css/main.7acaea2f.css.map",
-    "main.750c901d.js.map": "/Kids_Like/static/js/main.750c901d.js.map"
+    "static/media/menu.svg": "/Kids_Like/static/media/menu.9a48bee006b2514bfdbbfe1a2dbc3f1f.svg",
+    "main.ef1b6380.css.map": "/Kids_Like/static/css/main.ef1b6380.css.map",
+    "main.58b48141.js.map": "/Kids_Like/static/js/main.58b48141.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.750c901d.js"
+    "static/css/main.ef1b6380.css",
+    "static/js/main.58b48141.js"
   ]
 }
