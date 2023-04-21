@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGifts } from 'redux/Award/AwardOperations';
-import { allGifts, giftIds } from 'redux/Award/AwardSelectors';
+import { allGifts } from 'redux/Award/AwardSelectors';
 import { ReactComponent as Selected } from '../../images/Selected.svg';
 import { ReactComponent as Unselected } from '../../images/Unselected.svg';
-import { addGiftId } from 'redux/Award/AwardSlice';
+// import { addGiftId } from 'redux/Award/AwardSlice';
 
 export default function AwardList() {
   const gifts = useSelector(allGifts);
-  const ids = useSelector(giftIds);
+  // const ids = useSelector(giftIds);
 
   const dispatch = useDispatch();
 
