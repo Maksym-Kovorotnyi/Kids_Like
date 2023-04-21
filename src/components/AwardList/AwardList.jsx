@@ -18,16 +18,15 @@ export default function AwardList() {
   }, [dispatch]);
 
   const handleTogleSelected = e => {
-    if (e.target.nodeName === 'rect') {
-      ids.forEach(id => {
-        if (Number(id) === Number(e.currentTarget.id)) {
-          return;
-          gifts.forEach(({ isSelected }) => (isSelected = true));
-          dispatch(addGiftId(Number(e.currentTarget.id)));
-        }
-      });
-    }
-    console.log(gifts);
+    // if (e.target.nodeName === 'rect') {
+    //   ids.forEach(id => {
+    //     if (Number(id) === Number(e.currentTarget.id)) {
+    //       return;
+    //       gifts.forEach(({ isSelected }) => (isSelected = true));
+    //       dispatch(addGiftId(Number(e.currentTarget.id)));
+    //     }
+    //   });
+    // }
   };
 
   return (

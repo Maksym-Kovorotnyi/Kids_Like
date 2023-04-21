@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/AuthSlice';
 import { awardReducer } from './Award/AwardSlice';
 import { taskReducer } from './Task/TaskSlice';
+import { planningReducer } from './Planinning/PlanningSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     award: awardReducer,
     task: taskReducer,
+    planning: planningReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
