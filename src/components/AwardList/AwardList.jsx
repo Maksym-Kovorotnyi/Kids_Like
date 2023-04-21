@@ -33,7 +33,7 @@ export default function AwardList() {
   return (
     <div>
       <ul>
-        {giftState.map(({ title, price, imageUrl, id, isSelected }) => {
+        {gifts.map(({ title, price, imageUrl, id, isSelected }) => {
           return (
             <li onClick={handleTogleSelected} key={id} id={id}>
               <img src={imageUrl} alt="" />
