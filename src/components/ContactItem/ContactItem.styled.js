@@ -25,7 +25,7 @@ export const ContactItems = styled.li`
 export const ContactImg = styled.img`
   width: 100%;
   max-height: 246px;
-
+  object-fit: cover;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 
@@ -72,12 +72,12 @@ export const ContactAbout = styled.p`
 export const ContactSocialList = styled.ul`
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 15px;
 `;
 
 export const ContactTelegtam = styled(ImTelegram)`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   fill: #ffbc33;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -88,8 +88,8 @@ export const ContactTelegtam = styled(ImTelegram)`
 `;
 
 export const ContactMail = styled(ImMail4)`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   fill: #ffbc33;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -100,8 +100,8 @@ export const ContactMail = styled(ImMail4)`
 `;
 
 export const ContactGit = styled(ImGithub)`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   fill: #ffbc33;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -112,8 +112,8 @@ export const ContactGit = styled(ImGithub)`
 `;
 
 export const ContactLinkedin = styled(ImLinkedin)`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   fill: #ffbc33;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
